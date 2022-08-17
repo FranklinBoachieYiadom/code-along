@@ -1,22 +1,36 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import TaskItem from "./TaskItem";
+import {v4 as uuid} from "uuid";
 
 function TaskManager(){
-   const [tasks, setTasks]=useState([]);
-   const [input, setInput]=useState([""]);
+    const [tasks, setTasks]= useState(()=>{
+        const savedTasks = localStorage.getItem("tasks");
+        if(!savedTasks)return[]
+        return JSON.parse(savedTasks);
+    });
+    const [input, setInput] = useState("");
+   
+    const handleSubmit= (e)=> {
+        e.preventDefault();
+        if(input ==="") return;
 
-   const handleSubmit = (e) =>{
-    e.preventDefault();
-    if (input==="")return;
+        const newTask ={
+            id: uuid(),
+            text: input,
+            completed: true,
+        };
 
-    setTasks([input, ...tasks]);
-    setInput("");
-   };
+        setTasks([newTask, ...tasks], );
+        setInput("");
+    };
+    const handleDelete = (id)=> {
+        const newTasks = tasks.filter((task)=> task.id !== id);
+        setTasks(newTasks);
+    };
+    useEffect(()=>{
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    },[tasks]);
 
-   const handleDelete= (idx)=> {
-    const newTasks = tasks.filter((task)=> task!==idx);
-    setTasks(newTasks);
-   };
 return(
 <div className="h-screen bg-blue-600 flex justify-center items-center">
           <div className="max-w-xl w-full max-h-96 bg-white rounded-xl px-5 py-10">
@@ -40,10 +54,12 @@ return(
         </form>
 
         <div className="space-y-2 overflow-y-auto h-56">
-        {tasks.map((task)=>{
-            return <TaskItem task= {task} handleDelete={handleDelete} />
-        })
-    }       
+        {tasks.map((task)=>
+
+            <TaskItem key={task.id} task= {task} handleDelete={handleDelete} />
+        )
+        }
+         
         </div>
     </div>
 </div>

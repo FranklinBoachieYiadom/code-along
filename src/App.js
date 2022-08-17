@@ -17,8 +17,8 @@ function App(){
 <Button label= "Register"/>     
 <Image />
 <Practice/> */}
-{/* <TaskManager/> */}
-<Form/>
+<TaskManager/> 
+{/* <Form/> */}
 </div>
 ); 
 }
