@@ -7,6 +7,7 @@ import TaskManager from "./components/TaskManager"
 import Form from "./components/Form";
 import ProductList from "./components/ProductList";
 import Product from "./components/Product";
+import Spinner from "./components/Spinner";
 
 function App(){
   return (
@@ -22,6 +23,7 @@ function App(){
 {/* <TaskManager/>  */}
 {/* <Form/> */}
 <ProductList/>
+<Spinner/>
 {/* <Product/> */}
 </div>
 ); 
