@@ -1,32 +1,40 @@
-import Header from "./components/Header";
-import Button from "./components/Button";
-import {Image} from "./components/Images";
+// import Header from "./components/Header";
+// import Button from "./components/Button";
+// import {Image} from "./components/Images";
 import NavBar from "./components/NavBar";
-import Practice from "./components/Practce";
-import TaskManager from "./components/TaskManager"
-import Form from "./components/Form";
+// import Practice from "./components/Practce";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductList from "./components/ProductList";
-import Product from "./components/Product";
-import Spinner from "./components/Spinner";
+import TaskManager from "./components/TaskManager";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+
+
+
 
 function App(){
   return (
   <div>
-     {/* <NavBar/>
-    <Header/>
-<Button label= "Add to cart"/>
-<Button label= "Home"/> 
-<Button label= "About"/> 
-<Button label= "Register"/>     
-<Image />
-<Practice/> */}
-{/* <TaskManager/>  */}
-{/* <Form/> */}
-<ProductList/>
-<Spinner/>
-{/* <Product/> */}
+     <BrowserRouter>
+     <NavBar/>
+     <Routes>
+      <Route path= "/" element= {<Home/>}/>
+      <Route path= "/task-manager" element= {<TaskManager/>}/>
+      <Route path= "/product-list" element= {<ProductList/>}/>
+      <Route path= "/contact" element= {<Contact/>}/>
+      <Route path= "/about" element= {<About/>}/>
+     </Routes>
+     </BrowserRouter>
 </div>
 ); 
 }
 export default App;
+
+
+
+
+
+
+
 
