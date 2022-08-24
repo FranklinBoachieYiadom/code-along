@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import TaskItem from "./TaskItem";
+import TaskItem from "../components/TaskItem";
 import {v4 as uuid} from "uuid";
 
 function TaskManager(){
