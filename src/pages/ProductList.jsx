@@ -1,5 +1,5 @@
 import React, {useEffect,} from "react";
-import axios from "axios";
+// import axios from "axios";
 import Product from "../components/Product";
 import useAxios from "../hooks/useAxios";
 import Spinner from "../components/Spinner";
